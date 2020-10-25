@@ -1,0 +1,24 @@
+{
+	"name": "Existing Dockerfile",
+	"context": "..",
+    "dockerFile": "../Dockerfile",
+    
+	"settings": { 
+		"terminal.integrated.shell.linux": "/bin/bash"
+	},
+	"runArgs": [
+		"--rm",
+		"--user", "<your UID>:<your GID>",
+		"-e", "DISPLAY=${env:DISPLAY}",
+		"-v", "/etc/group:/etc/group:ro",
+		"-v", "/etc/passwd:/etc/passwd:ro",
+    	"-v", "/etc/shadow:/etc/shadow:ro",
+    	"-v", "/etc/sudoers.d:/etc/sudoers.d:ro",
+		"-v", "/tmp/.X11-unix:/tmp/.X11-unix:rw",
+		"-v", "${localWorkspaceFolder}:/home/<your username>/", 
+    	"--workdir", "/home/<your username>/"
+	],
+	"extensions": [
+		"ms-python.python"
+	]
+}
